@@ -21,7 +21,7 @@ const Footer = () => {
             <a className="ml-3 text-gray-500 text-2xl" href='https://github.com/MehjabinKhan'>
                 <FaGithub/>
             </a>
-            <a className="ml-3 text-gray-500 text-2xl" href='https://wa.me/qr/FWX3BWWPABVRG1'>
+            <a className="ml-3 text-gray-500 text-2xl" href='https://wa.me/qr/7VHINLHITFBGC1 '>
                 <FaWhatsapp/>
             </a>
             </span>
