@@ -20,9 +20,9 @@ const Lobby = () => {
                <a href="/" className='flex gap-2'>Flavor Fusion <IoFastFoodOutline className='text-3xl'/></a>
             </h1>
             <p className="mb-8 leading-relaxed">
-            At Flavor Fusion, we’ve created a vibrant and inviting space where flavor meets comfort. 
+            At Flavor Fusion, we have created a vibrant and inviting space where flavor meets comfort. 
             The ambiance is designed to make you feel right at home, with cozy seating, soft lighting, 
-            and a modern touch throughout. Whether you’re here to unwind or fuel up for the day, our 
+            and a modern touch throughout. Whether you are here to unwind or fuel up for the day, our 
             welcoming atmosphere is the perfect spot to enjoy good vibes and great food.
             </p>
             <div className="flex justify-center">

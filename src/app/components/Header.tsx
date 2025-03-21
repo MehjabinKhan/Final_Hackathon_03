@@ -1,43 +1,92 @@
-import React from 'react'
-import { CiSearch } from 'react-icons/ci'
-import { FaCartShopping } from 'react-icons/fa6'
-import { IoFastFoodOutline } from 'react-icons/io5'
-import { MdOutlineAccountCircle } from 'react-icons/md'
+"use client";
+import React, { useState } from 'react';
+import { CiSearch } from 'react-icons/ci';
+import { FaCartShopping } from 'react-icons/fa6';
+import { IoFastFoodOutline } from 'react-icons/io5';
+import { MdOutlineAccountCircle } from 'react-icons/md';
 
 const Header = () => {
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value);
+  };
+
   return (
-    <div>
-      <header className="text-gray-900 bg-blue-100 body-font">
-        <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-            <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0" href='/'>
-            <IoFastFoodOutline className='text-3xl'/>
-            <span className="ml-3 text-xl font-semibold">Flavor Fusion</span>
+    <header className="bg-blue-100 text-slate-900 shadow-md">
+      <div className="container mx-auto p-4 flex flex-wrap items-center justify-between">
+        {/* Logo Section */}
+        <a className="flex items-center" href="/">
+          <IoFastFoodOutline className="text-3xl" />
+          <span className="ml-2 text-2xl font-bold">Flavor Fusion</span>
+        </a>
+
+        {/* Navigation Links */}
+        <nav className="hidden md:flex items-center space-x-8 text-lg font-medium">
+          {['Home', 'Menu', 'About', 'Contact'].map((item, index) => (
+            <a
+              key={index}
+              className="transition-colors hover:text-blue-600"
+              href={`/${item.toLowerCase()}`}
+            >
+              {item}
             </a>
-            <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center mr-40 gap-4">
-            <a className="mr-5 text-lg text-black hover:text-gray-700" href='/'>Home</a>
-            <a className="mr-5 text-lg text-black hover:text-gray-700" href='/components/menu'>Menu</a>
-            <a className="mr-5 text-lg text-black hover:text-gray-700" href='/components/about'>About</a>
-            <a className="mr-5 text-lg text-black hover:text-gray-700" href='/components/contact'>Contact</a>
-            </nav>
-            <div className="hidden lg:flex items-center bg-gray-100 rounded-md px-3 py-1">
-                <input
-                type="text"
-                className="bg-gray-100 outline-none text-sm text-black placeholder-gray-700"
-                placeholder="Search..."
-                />
-                <a href="/"><CiSearch className="text-xl bg-blue-200 cursor-pointer" /></a>
-           </div>
-            <a href="/components/menu">
-            <FaCartShopping className='text-3xl ml-2 mr-2' color='Darkgray'/>
-            </a>
-            <a href="/components/auth/login">
-            <MdOutlineAccountCircle className='text-3xl'/>
-            </a>
+          ))}
+        </nav>
+
+        {/* Cart and Account Icons */}
+        <div className="flex items-center space-x-6">
+          <a 
+            href="/components/menu" 
+            aria-label="View Cart" 
+            className="text-2xl hover:text-blue-600"
+          >
+            <FaCartShopping />
+          </a>
+          <a 
+            href="/components/auth/login" 
+            aria-label="User Account" 
+            className="text-2xl hover:text-blue-600"
+          >
+            <MdOutlineAccountCircle />
+          </a>
+
+          {/* Search Button */}
+          <button 
+            aria-label="Toggle Search" 
+            className="md:hidden text-xl p-2 hover:text-blue-600"
+          >
+            <CiSearch />
+          </button>
+
+          {/* Search Bar - Always visible on all screen sizes */}
+          <div className="relative">
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={handleSearchInputChange}
+              className="p-2 rounded-md border border-gray-300 focus:outline-none focus:ring focus:ring-blue-600 w-40 md:w-60"
+              placeholder="Search..."
+              aria-label="Search"
+            />
+          </div>
         </div>
-      </header>
+      </div>
 
-    </div>
-  )
-}
+      {/* Mobile Navigation Menu */}
+      <div className="md:hidden flex flex-col items-center space-y-4 mt-4">
+        {['Home', 'Menu', 'About', 'Contact'].map((item, index) => (
+          <a 
+            key={index} 
+            className="text-lg text-slate-900 hover:text-blue-600 transition-colors" 
+            href={`/${item.toLowerCase()}`}
+          >
+            {item}
+          </a>
+        ))}
+      </div>
+    </header>
+  );
+};
 
-export default Header
+export default Header;

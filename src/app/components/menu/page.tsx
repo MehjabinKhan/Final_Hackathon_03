@@ -27,7 +27,7 @@ const MenuPage = () => {
         setMenu(data);
       } catch (err: unknown) {
         if (err instanceof Error) {
-          setError(err.message); // Now we know that err is an instance of Error
+          setError(err.message);
         } else {
           setError("Failed to load menu.");
         }
@@ -39,7 +39,7 @@ const MenuPage = () => {
     fetchMenu();
   }, []);
 
-  // Load cart from local storage on mount (only in the browser)
+  // Load cart from local storage on mount (only in browser)
   useEffect(() => {
     if (typeof window !== "undefined") {
       const storedCart = localStorage.getItem("cart");
@@ -56,7 +56,7 @@ const MenuPage = () => {
 
   // Add to cart
   const addToCart = (item: MenuItem) => {
-    setCart([...cart, item]);
+    setCart((prevCart) => [...prevCart, item]);
   };
 
   // Remove from cart
@@ -90,15 +90,15 @@ const MenuPage = () => {
       </h1>
 
       {/* Category Filter */}
-      <div className="flex justify-center gap-4 mb-8">
+      <div className="flex flex-wrap justify-center gap-2 mb-8">
         {categories.map((cat) => (
           <button
             key={cat}
-            className={`px-6 py-3 text-lg font-semibold rounded-lg ${
+            className={`px-4 py-2 text-lg font-semibold rounded-md ${
               filter === cat
-                ? "bg-blue-600 text-white"
+                ? "bg-blue-600 text-white shadow-md"
                 : "bg-gray-200 text-gray-700"
-            } transition duration-300`}
+            } transition duration-300 whitespace-nowrap`}
             onClick={() => setFilter(cat)}
           >
             {cat}
@@ -111,7 +111,7 @@ const MenuPage = () => {
         {filteredMenu.map((item) => (
           <div
             key={item.id}
-            className="bg-white p-6 rounded-2xl shadow-xl hover:shadow-2xl transition-shadow duration-300"
+            className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300"
           >
             <Image
               src={item.image}
@@ -141,7 +141,7 @@ const MenuPage = () => {
       </div>
 
       {/* Cart Section */}
-      <div className="mt-12 p-6 bg-gray-100 rounded-xl shadow-md">
+      <div className="mt-12 p-6 bg-gray-100 rounded-xl shadow-md sticky top-0 z-10">
         <h2 className="text-3xl font-bold text-gray-900 mb-6">Shopping Cart</h2>
         {cart.length > 0 ? (
           cart.map((item) => (

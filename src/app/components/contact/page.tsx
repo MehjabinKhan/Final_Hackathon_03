@@ -7,7 +7,7 @@ const Contact = () => {
   const [message, setMessage] = useState('');
 
   const handleSendMessage = () => {
-    const whatsappURL = `https://wa.me/qr/FWX3BWWPABVRG1?text=Hello! My name is ${encodeURIComponent(name)}.%0A%0A${encodeURIComponent(message)}`;
+    const whatsappURL = `https://wa.me/qr/7VHINLHITFBGC1?text=Hello! My name is ${encodeURIComponent(name)}.%0A%0A${encodeURIComponent(message)}`;
 
     window.open(whatsappURL, '_blank');
   };

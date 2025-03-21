@@ -23,7 +23,7 @@ const Hero = () => {
             <p className="mb-8 leading-relaxed">
               Welcome to Flavor Fusion! where every bite is an experience.
                Step into a warm, inviting atmosphere filled with vibrant flavors 
-               and cozy comfort. We’re here to make your food journey unforgettable!
+               and cozy comfort. We are here to make your food journey unforgettable!
             </p>
             <div className="flex justify-center">
                 <button className="inline-flex text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg">

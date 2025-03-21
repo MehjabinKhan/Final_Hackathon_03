@@ -91,7 +91,7 @@ const LoginPage = () => {
 
         <p className="text-center text-sm text-gray-500 mt-4">
           Dont have an account?{" "}
-          <Link href="/register" className="text-blue-500 hover:underline">
+          <Link href="/components/auth/register" className="text-blue-500 hover:underline">
             Create Account
           </Link>
         </p>
